@@ -1,0 +1,51 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        String[] dataJa = {"プログラマ/いのちけずって/今日も行く", "プロ生ちゃん/プログラマーの/癒しの子", "スパゲッティ/見かけるだけで/寒気する", "ＦＦと/聞いて思うは/２５５", "野田さんと/一緒に仕事を/してみたい", "できますと/言った直後に/後悔が"};
+        String[] dataEn = {"An old silent pond/ A frog jumps into the pond/ Splash! Silence again.", "In the cicada's cry/ No sign can foretell/ How soon it must die.", "Winter solitude/ In a world of one colour/ The sound of wind.", "I write, erase, rewrite/ Erase again, and then/ A poppy blooms.", "Over the wintry/ Forest, winds howl in rage/ With no leaves to blow.", "Love between us is/ Speech and breath. Loving you is/ A long river running."};
+        String[] data;
+        String lang;
+
+        System.out.println("Bienvenido al generador de haiku. Por favor, seleccione el idioma (en / ja):");
+        lang = scanner.nextLine();
+        while (!lang.equals("en") && !lang.equals("ja")) {
+            System.out.println("Idioma no válido. Por favor, seleccione el idioma (en / ja):");
+            lang = scanner.nextLine();
+        }
+
+        if (lang.equals("en")) {
+            data = dataEn;
+        } else {
+            data = dataJa;
+        }
+
+        System.out.println("Haiku generado:");
+
+        System.out.println();
+
+        System.out.println("Presione enter para generar un haiku aleatorio o escriba su propio haiku:");
+        String input = scanner.nextLine();
+        if (!input.equals("")) {
+            System.out.println();
+            System.out.println(input);
+            System.exit(0);
+        }
+
+        int ran = random.nextInt(data.length);
+
+        String[] strAry = data[ran].split("/");
+        String a = "" + strAry[0] + "　 　 　 　";
+        String b = "　" + strAry[1] + "　 　 　 　";
+        String c = "　　"+ strAry[2] + "　　　 　 　";
+
+        for (int i = 0; i < 9; i++){
+            System.out.print(c.substring(i,i+1));
+            System.out.print(b.substring(i,i+1));
+            System.out.println(a.substring(i,i+1));
+        }
+    }
+}
